@@ -21,28 +21,28 @@ html, body {
 /* =========================
    VISOKOKONTRASTNI LINK NA VRHU
 ========================= */
+/* =========================
+   PROMENJENA POZICIJA LINKA
+========================= */
 .top-link-container {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 9999; /* Najviši indeks - uvek iznad svega i klikabilan */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 70%, transparent 100%);
-    padding: 15px 0 25px 0;
-    pointer-events: auto;
+    top: 50%;               /* 50% visine ekrana */
+    left: 50px;             /* 50px od leve ivice */
+    transform: translateY(-50%); /* Centriranje po vertikali */
+    z-index: 9999;          /* Najviši indeks - klikabilan iznad svega */
+    display: inline-block;
+    pointer-events: none;   /* Da ne blokira klikove u pozadini */
 }
 
 .premium-link {
-    color: #ff6a00; /* Moćna neonska narandžasta za maksimalan kontrast */
+    color: #ff6a00;         /* Jarka narandžasta za kontrast */
     font-size: 22px;
     font-weight: 900;
     text-transform: uppercase;
     text-decoration: none;
     letter-spacing: 3px;
-    /* Brutalan višeslojni sjaj za čitljivost na svakoj podlozi */
+    pointer-events: auto;   /* Sam link ostaje 100% klikabilan */
+    /* Jak sjaj za čitljivost */
     text-shadow: 
         0 0 10px #ff6a00,
         0 0 20px #ff3300,
@@ -50,15 +50,6 @@ html, body {
         0 0 5px #000;
     transition: all 0.3s ease;
     animation: linkPulse 2.5s infinite ease-in-out;
-}
-
-.premium-link:hover {
-    color: #fff;
-    text-shadow: 
-        0 0 15px #00e5ff,
-        0 0 30px #0086ff,
-        0 0 50px #000;
-    transform: scale(1.08);
 }
 
 @keyframes linkPulse {
