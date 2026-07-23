@@ -1,32 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html lang="sr">
 <head>
-
 <meta charset="UTF-8">
-<title>Deep Ocean XAT</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deep Ocean XAT - Radio Galaksija</title>
 
 <style>
-
-html,body{
-    margin:0;
-    padding:0;
-    width:100%;
-    height:100%;
-    overflow:hidden;
+/* =========================
+   OSNOVNI RESET i STRUKTURA
+========================= */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
+/* =========================
+   VISOKOKONTRASTNI LINK NA VRHU
+========================= */
+.top-link-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999; /* Najviši indeks - uvek iznad svega i klikabilan */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 70%, transparent 100%);
+    padding: 15px 0 25px 0;
+    pointer-events: auto;
+}
+
+.premium-link {
+    color: #ff6a00; /* Moćna neonska narandžasta za maksimalan kontrast */
+    font-size: 22px;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 3px;
+    /* Brutalan višeslojni sjaj za čitljivost na svakoj podlozi */
+    text-shadow: 
+        0 0 10px #ff6a00,
+        0 0 20px #ff3300,
+        0 0 40px #000,
+        0 0 5px #000;
+    transition: all 0.3s ease;
+    animation: linkPulse 2.5s infinite ease-in-out;
+}
+
+.premium-link:hover {
+    color: #fff;
+    text-shadow: 
+        0 0 15px #00e5ff,
+        0 0 30px #0086ff,
+        0 0 50px #000;
+    transform: scale(1.08);
+}
+
+@keyframes linkPulse {
+    0%, 100% { transform: scale(1); opacity: 0.95; }
+    50% { transform: scale(1.03); opacity: 1; filter: drop-shadow(0 0 15px rgba(255,106,0,0.6)); }
+}
 
 /* =========================
-   GLAVNO MORE
+   GLAVNO MORE (DUBINA)
 ========================= */
-
-.ocean{
-
-    position:fixed;
-    inset:0;
-
-    overflow:hidden;
-
+.ocean {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
     background:
     radial-gradient(
         ellipse at 50% 10%,
@@ -40,700 +86,184 @@ html,body{
         #002c4a 70%,
         #00101e 100%
     );
-
 }
 
+/* BLAGA SVETLOST KROZ VODU */
+.water-light {
+    position: absolute;
+    top: -40%;
+    left: -30%;
+    width: 160%;
+    height: 120%;
+    background: radial-gradient(ellipse, rgba(255,255,255,.12), transparent 55%);
+    animation: waterGlow 18s infinite alternate;
+    pointer-events: none;
+}
 
+@keyframes waterGlow {
+    0% { transform: translate(-50px, 0) scale(1); opacity: .35; }
+    100% { transform: translate(80px, 40px) scale(1.2); opacity: .6; }
+}
+
+.depth {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,.65));
+    pointer-events: none;
+    z-index: 20;
+}
 
 /* =========================
-   BLAGA SVETLOST KROZ VODU
-   (bez linija)
+   POBOLJŠANI MEHURIĆI
 ========================= */
-
-
-.water-light{
-
-position:absolute;
-
-top:-40%;
-left:-30%;
-
-width:160%;
-height:120%;
-
-
-background:
-
-radial-gradient(
-ellipse,
-rgba(255,255,255,.12),
-transparent 55%
-);
-
-
-animation:
-waterGlow 18s infinite alternate;
-
-pointer-events:none;
-
+.bubble {
+    position: absolute;
+    bottom: -60px;
+    border-radius: 50%;
+    background: rgba(180,235,255,.18);
+    border: 1px solid rgba(255,255,255,.3);
+    box-shadow: 0 0 12px rgba(0,180,255,.4);
+    animation: bubbleUp linear infinite;
+    z-index: 15;
 }
 
-
-
-@keyframes waterGlow{
-
-
-0%{
-
-transform:
-translate(-50px,0)
-scale(1);
-
-opacity:.35;
-
+@keyframes bubbleUp {
+    0% { transform: translateY(0) translateX(0) scale(.7); opacity: 0; }
+    10% { opacity: .8; }
+    50% { transform: translateY(-60vh) translateX(-25px) scale(1); }
+    100% { transform: translateY(-120vh) translateX(35px) scale(1.2); opacity: 0; }
 }
 
-
-100%{
-
-transform:
-translate(80px,40px)
-scale(1.2);
-
-opacity:.6;
-
-}
-
-}
-
-
-
-
+.b1 { width: 12px; height: 12px; left: 15%; animation-duration: 18s; }
+.b2 { width: 25px; height: 25px; left: 35%; animation-duration: 28s; }
+.b3 { width: 8px; height: 8px; left: 60%; animation-duration: 14s; }
+.b4 { width: 18px; height: 18px; left: 82%; animation-duration: 22s; }
 
 /* =========================
-   DUBINA
+   MORSKE ŽIVOTINJE (SA PREKRETANJEM)
 ========================= */
-
-
-.depth{
-
-
-position:absolute;
-
-inset:0;
-
-
-background:
-
-radial-gradient(
-ellipse at center,
-transparent 30%,
-rgba(0,0,0,.65)
-);
-
-
-pointer-events:none;
-
-z-index:20;
-
-}
-
-
-
-
-/* =========================
-   MEHURICI
-========================= */
-
-
-.bubble{
-
-
-position:absolute;
-
-bottom:-50px;
-
-border-radius:50%;
-
-
-background:
-rgba(180,235,255,.18);
-
-
-border:
-1px solid rgba(255,255,255,.25);
-
-
-box-shadow:
-0 0 12px rgba(0,180,255,.4);
-
-
-animation:
-bubbleUp linear infinite;
-
-
-z-index:15;
-
-}
-
-
-
-@keyframes bubbleUp{
-
-
-0%{
-
-transform:
-translateY(0)
-translateX(0)
-scale(.7);
-
-opacity:0;
-
-}
-
-
-20%{
-
-opacity:.8;
-
-}
-
-
-100%{
-
-transform:
-
-translateY(-120vh)
-translateX(60px)
-scale(1.2);
-
-opacity:0;
-
-}
-
-
-}
-
-
-.b1{
-width:12px;
-height:12px;
-left:15%;
-animation-duration:18s;
-}
-
-
-.b2{
-width:25px;
-height:25px;
-left:35%;
-animation-duration:28s;
-}
-
-
-.b3{
-width:8px;
-height:8px;
-left:60%;
-animation-duration:14s;
-}
-
-
-.b4{
-width:18px;
-height:18px;
-left:82%;
-animation-duration:22s;
-}
-
-
-
-
-
-/* =========================
-   MORSKE ZIVOTINJE
-========================= */
-
-
-.creature{
-
-
-position:absolute;
-
-pointer-events:none;
-
-z-index:10;
-
-
-filter:
-drop-shadow(
-0 0 8px rgba(0,180,255,.45)
-);
-
-
-}
-
-
-
-/* 01 */
-
-.c01{
-
-width:100px;
-
-animation:
-swim01 42s infinite ease-in-out;
-
-}
-
-
-@keyframes swim01{
-
-0%{
-left:-10%;
-top:30%;
-}
-
-25%{
-left:25%;
-top:20%;
-}
-
-50%{
-left:55%;
-top:35%;
-}
-
-75%{
-left:80%;
-top:25%;
-}
-
-100%{
-left:110%;
-top:40%;
-}
-
-}
-
-
-
-
-/* 02 */
-
-.c02{
-
-width:140px;
-
-animation:
-swim02 55s infinite ease-in-out;
-
-}
-
-
-@keyframes swim02{
-
-
-0%{
-left:110%;
-top:60%;
-}
-
-
-30%{
-left:75%;
-top:45%;
-}
-
-
-60%{
-left:35%;
-top:65%;
-}
-
-
-100%{
-left:-20%;
-top:50%;
-}
-
-
-}
-
-
-
-
-/* 03 dubina */
-
-.c03{
-
-width:260px;
-
-opacity:.45;
-
-animation:
-swim03 90s infinite linear;
-
-}
-
-
-
-@keyframes swim03{
-
-
-0%{
-left:-30%;
-top:70%;
-}
-
-
-50%{
-left:45%;
-top:60%;
+.creature {
+    position: absolute;
+    pointer-events: none;
+    z-index: 10;
+    filter: drop-shadow(0 0 8px rgba(0,180,255,.45));
+    will-change: transform, left, top;
 }
 
+/* Desno orijentisana stvorenja (plivaju s leva na desno) */
+.c01 { width: 100px; animation: swim01 42s infinite ease-in-out; }
+.c03 { width: 260px; opacity: .45; animation: swim03 90s infinite linear; }
+.c04 { width: 90px; animation: swim04 38s infinite ease-in-out; }
+.c05 { width: 170px; animation: swim05 70s infinite ease-in-out; }
+.c07 { width: 220px; opacity: .55; animation: swim07 100s infinite linear; }
+.c09 { width: 130px; animation: swim09 65s infinite ease-in-out; }
 
-100%{
-left:120%;
-top:75%;
-}
-
-
-}
-
-
-
-
-/* 04 */
-
-.c04{
-
-width:90px;
-
-animation:
-swim04 38s infinite ease-in-out;
-
-}
-
-
-@keyframes swim04{
-
-
-0%{
-left:10%;
-top:80%;
-}
-
-
-50%{
-left:60%;
-top:55%;
-}
-
-
-100%{
-left:100%;
-top:75%;
-}
-
-
-}
-
-
-
-
-
-/* 05 */
-
-.c05{
-
-width:170px;
-
-animation:
-swim05 70s infinite ease-in-out;
-
-}
-
-
-@keyframes swim05{
-
-
-0%{
-left:-20%;
-top:45%;
-}
-
-
-40%{
-left:40%;
-top:30%;
-}
-
-
-80%{
-left:80%;
-top:50%;
-}
-
-
-100%{
-left:120%;
-top:40%;
-}
-
-
-}
-
-
-
-
-
-/* 06 */
-
-.c06{
-
-width:120px;
-
-animation:
-swim06 60s infinite ease-in-out;
-
-}
-
-
-@keyframes swim06{
-
-
-0%{
-left:100%;
-top:20%;
-}
-
-
-50%{
-left:50%;
-top:40%;
-}
-
-
-100%{
-left:-20%;
-top:25%;
-}
-
-
-}
-
-
-
-
-/* 07 */
-
-.c07{
-
-width:220px;
-
-opacity:.55;
-
-animation:
-swim07 100s infinite linear;
-
-}
-
-
-@keyframes swim07{
-
-
-0%{
-left:-40%;
-top:20%;
-}
-
-
-100%{
-left:120%;
-top:35%;
-}
-
-
-}
-
-
-
-
-
-/* 08 */
-
-.c08{
-
-width:110px;
-
-animation:
-swim08 50s infinite ease-in-out;
-
-}
-
-
-@keyframes swim08{
-
-
-0%{
-left:80%;
-top:80%;
-}
-
+/* Levo orijentisana stvorenja (plivaju s desna na levo - transformisana da gledaju levo) */
+.c02 { width: 140px; animation: swim02 55s infinite ease-in-out; transform: scaleX(-1); }
+.c06 { width: 120px; animation: swim06 60s infinite ease-in-out; transform: scaleX(-1); }
+.c08 { width: 110px; animation: swim08 50s infinite ease-in-out; transform: scaleX(-1); }
+.c10 { width: 160px; animation: swim10 75s infinite ease-in-out; transform: scaleX(-1); }
 
-50%{
-left:40%;
-top:55%;
+/* ANIMACIJE KRETANJA */
+@keyframes swim01 {
+    0% { left: -10%; top: 30%; }
+    25% { left: 25%; top: 20%; }
+    50% { left: 55%; top: 35%; }
+    75% { left: 80%; top: 25%; }
+    100% { left: 110%; top: 40%; }
 }
 
-
-100%{
-left:-20%;
-top:70%;
-}
-
-
-}
-
-
-
-
-
-/* 09 */
-
-.c09{
-
-width:130px;
-
-animation:
-swim09 65s infinite ease-in-out;
-
-}
-
-
-@keyframes swim09{
-
-
-0%{
-left:-20%;
-top:60%;
+@keyframes swim02 {
+    0% { left: 110%; top: 60%; }
+    30% { left: 75%; top: 45%; }
+    60% { left: 35%; top: 65%; }
+    100% { left: -20%; top: 50%; }
 }
 
-
-50%{
-left:60%;
-top:75%;
+@keyframes swim03 {
+    0% { left: -30%; top: 70%; }
+    50% { left: 45%; top: 60%; }
+    100% { left: 120%; top: 75%; }
 }
-
 
-100%{
-left:110%;
-top:50%;
+@keyframes swim04 {
+    0% { left: -10%; top: 80%; }
+    50% { left: 60%; top: 55%; }
+    100% { left: 110%; top: 75%; }
 }
 
-
+@keyframes swim05 {
+    0% { left: -20%; top: 45%; }
+    40% { left: 40%; top: 30%; }
+    80% { left: 80%; top: 50%; }
+    100% { left: 120%; top: 40%; }
 }
-
-
-
-
-
-/* 10 */
-
-.c10{
-
-width:160px;
 
-animation:
-swim10 75s infinite ease-in-out;
-
+@keyframes swim06 {
+    0% { left: 110%; top: 20%; }
+    50% { left: 50%; top: 40%; }
+    100% { left: -20%; top: 25%; }
 }
-
 
-@keyframes swim10{
-
-
-0%{
-left:120%;
-top:15%;
+@keyframes swim07 {
+    0% { left: -40%; top: 20%; }
+    100% { left: 120%; top: 35%; }
 }
-
 
-50%{
-left:50%;
-top:35%;
+@keyframes swim08 {
+    0% { left: 110%; top: 80%; }
+    50% { left: 40%; top: 55%; }
+    100% { left: -20%; top: 70%; }
 }
 
-
-100%{
-left:-20%;
-top:20%;
+@keyframes swim09 {
+    0% { left: -20%; top: 60%; }
+    50% { left: 60%; top: 75%; }
+    100% { left: 110%; top: 50%; }
 }
-
 
+@keyframes swim10 {
+    0% { left: 110%; top: 15%; }
+    50% { left: 50%; top: 35%; }
+    100% { left: -20%; top: 20%; }
 }
-
-
-
 </style>
-
 </head>
-
 
 <body>
 
-
-<div class="ocean">
-
-
-<div class="water-light"></div>
-
-
-
-<div class="bubble b1"></div>
-<div class="bubble b2"></div>
-<div class="bubble b3"></div>
-<div class="bubble b4"></div>
-
-
-
-<img class="creature c01" src="https://i.imgur.com/AaEWDOs.gif">
-
-<img class="creature c02" src="https://i.imgur.com/3fe3rwn.gif">
-
-<img class="creature c03" src="https://i.imgur.com/PBlkcyw.gif">
-
-<img class="creature c04" src="https://i.imgur.com/2fCJYbt.gif">
-
-<img class="creature c05" src="https://i.imgur.com/MOmJ9VR.gif">
-
-<img class="creature c06" src="https://i.imgur.com/awkNxXg.gif">
-
-<img class="creature c07" src="https://i.imgur.com/NkT0j9G.gif">
-
-<img class="creature c08" src="https://i.imgur.com/ljHMWjF.gif">
-
-<img class="creature c09" src="https://i.imgur.com/QQGiehf.gif">
-
-<img class="creature c10" src="https://i.imgur.com/AqgYZlO.gif">
-
-<img class="creature c05" src="https://i.imgur.com/YgI0sf7.gif">
-
-<img class="creature c06" src="https://i.imgur.com/9im4MOK.gif">
-
-<img class="creature c08" src="https://i.imgur.com/z494fsE.gif">
-
-<img class="creature c07" src="https://i.imgur.com/VZmMgnR.gif">
-
-
-
-<div class="depth"></div>
-
-
+<!-- KLIKABILNI VRH SA VISOKIM KONTRASTOM -->
+<div class="top-link-container">
+    <a href="https://onrender.com" target="_blank" class="premium-link">📻 Slušaj Uživo: Radio Galaksija 📻</a>
 </div>
 
+<div class="ocean">
+    <div class="water-light"></div>
+
+    <!-- Mehurići -->
+    <div class="bubble b1"></div>
+    <div class="bubble b2"></div>
+    <div class="bubble b3"></div>
+    <div class="bubble b4"></div>
+
+    <!-- Morski Svet -->
+    <img class="creature c01" src="https://i.imgur.com/AaEWDOs.gif" alt="Creature">
+    <img class="creature c02" src="https://i.imgur.com/3fe3rwn.gif" alt="Creature">
+    <img class="creature c03" src="https://i.imgur.com/PBlkcyw.gif" alt="Creature">
+    <img class="creature c04" src="https://i.imgur.com/2fCJYbt.gif" alt="Creature">
+    <img class="creature c05" src="https://i.imgur.com/MOmJ9VR.gif" alt="Creature">
+    <img class="creature c06" src="https://i.imgur.com/awkNxXg.gif" alt="Creature">
+    <img class="creature c07" src="https://i.imgur.com/NkT0j9G.gif" alt="Creature">
+    <img class="creature c08" src="https://i.imgur.com/ljHMWjF.gif" alt="Creature">
+    <img class="creature c09" src="https://i.imgur.com/QQGiehf.gif" alt="Creature">
+    <img class="creature c10" src="https://i.imgur.com/AqgYZlO.gif" alt="Creature">
+    <img class="creature c05" src="https://i.imgur.com/YgI0sf7.gif" alt="Creature">
+    <img class="creature c06" src="https://i.imgur.com/9im4MOK.gif" alt="Creature">
+    <img class="creature c08" src="https://i.imgur.com/z494fsE.gif" alt="Creature">
+    <img class="creature c07" src="https://i.imgur.com/VZmMgnR.gif" alt="Creature">
+
+    <div class="depth"></div>
+</div>
 
 </body>
 </html>
