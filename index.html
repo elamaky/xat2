@@ -1,323 +1,680 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <title>Deep Ocean XAT</title>
 
 <style>
 
 html,body{
-margin:0;
-padding:0;
-width:100%;
-height:100%;
-overflow:hidden;
+    margin:0;
+    padding:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
 }
 
+
+/* =========================
+   GLAVNO MORE
+========================= */
 
 .ocean{
 
-position:fixed;
-inset:0;
+    position:fixed;
+    inset:0;
 
-overflow:hidden;
+    overflow:hidden;
 
-background:
-linear-gradient(
-180deg,
-#0088cc 0%,
-#00527a 35%,
-#002744 70%,
-#000914 100%
-);
+    background:
+    radial-gradient(
+        ellipse at 50% 10%,
+        rgba(0,180,240,.35),
+        transparent 45%
+    ),
+    linear-gradient(
+        180deg,
+        #006fa8 0%,
+        #00466f 35%,
+        #002c4a 70%,
+        #00101e 100%
+    );
 
 }
 
 
-/* SVETLOSNI ZRACI */
 
-.light{
+/* =========================
+   BLAGA SVETLOST KROZ VODU
+   (bez linija)
+========================= */
+
+
+.water-light{
 
 position:absolute;
-top:-30%;
-left:-20%;
 
-width:140%;
-height:90%;
+top:-40%;
+left:-30%;
+
+width:160%;
+height:120%;
+
 
 background:
-linear-gradient(
-120deg,
-transparent 35%,
-rgba(255,255,255,.18),
-transparent 60%
+
+radial-gradient(
+ellipse,
+rgba(255,255,255,.12),
+transparent 55%
 );
 
-animation:lightMove 15s infinite alternate;
+
+animation:
+waterGlow 18s infinite alternate;
+
+pointer-events:none;
 
 }
 
 
-@keyframes lightMove{
 
-from{transform:translateX(-100px);}
-to{transform:translateX(100px);}
+@keyframes waterGlow{
+
+
+0%{
+
+transform:
+translate(-50px,0)
+scale(1);
+
+opacity:.35;
 
 }
 
 
-/* TALASI */
+100%{
 
-.wave{
+transform:
+translate(80px,40px)
+scale(1.2);
+
+opacity:.6;
+
+}
+
+}
+
+
+
+
+
+/* =========================
+   DUBINA
+========================= */
+
+
+.depth{
+
 
 position:absolute;
+
 inset:0;
 
+
 background:
-repeating-linear-gradient(
-45deg,
-rgba(0,200,255,.07) 0px,
-rgba(0,200,255,.07) 100px,
-transparent 200px
+
+radial-gradient(
+ellipse at center,
+transparent 30%,
+rgba(0,0,0,.65)
 );
 
-animation:waveMove 14s infinite alternate;
+
+pointer-events:none;
+
+z-index:20;
 
 }
 
 
-@keyframes waveMove{
-
-from{
-transform:scale(1) rotate(-2deg);
-}
-
-to{
-transform:scale(1.15) rotate(3deg);
-}
-
-}
 
 
-/* MEHURICI */
+/* =========================
+   MEHURICI
+========================= */
 
 
 .bubble{
 
+
 position:absolute;
+
 bottom:-50px;
 
 border-radius:50%;
 
+
 background:
-rgba(180,240,255,.25);
+rgba(180,235,255,.18);
 
-border:1px solid rgba(255,255,255,.3);
 
-animation:bubble 18s infinite linear;
+border:
+1px solid rgba(255,255,255,.25);
+
+
+box-shadow:
+0 0 12px rgba(0,180,255,.4);
+
+
+animation:
+bubbleUp linear infinite;
+
+
+z-index:15;
 
 }
 
 
-@keyframes bubble{
+
+@keyframes bubbleUp{
+
 
 0%{
-transform:translateY(0) translateX(0);
+
+transform:
+translateY(0)
+translateX(0)
+scale(.7);
+
 opacity:0;
+
 }
 
-20%{opacity:1;}
+
+20%{
+
+opacity:.8;
+
+}
+
 
 100%{
-transform:translateY(-120vh) translateX(100px);
+
+transform:
+
+translateY(-120vh)
+translateX(60px)
+scale(1.2);
+
 opacity:0;
-}
 
 }
 
 
-.b1{width:15px;height:15px;left:10%;animation-duration:15s;}
-.b2{width:30px;height:30px;left:30%;animation-duration:25s;}
-.b3{width:10px;height:10px;left:55%;animation-duration:12s;}
-.b4{width:20px;height:20px;left:80%;animation-duration:20s;}
+}
+
+
+.b1{
+width:12px;
+height:12px;
+left:15%;
+animation-duration:18s;
+}
+
+
+.b2{
+width:25px;
+height:25px;
+left:35%;
+animation-duration:28s;
+}
+
+
+.b3{
+width:8px;
+height:8px;
+left:60%;
+animation-duration:14s;
+}
+
+
+.b4{
+width:18px;
+height:18px;
+left:82%;
+animation-duration:22s;
+}
 
 
 
-/* ZIVOTINJE */
+
+
+/* =========================
+   MORSKE ZIVOTINJE
+========================= */
 
 
 .creature{
+
 
 position:absolute;
 
 pointer-events:none;
 
-filter:drop-shadow(0 0 10px rgba(0,200,255,.5));
+z-index:10;
+
+
+filter:
+drop-shadow(
+0 0 8px rgba(0,180,255,.45)
+);
+
 
 }
 
 
-/* 1 */
+
+/* 01 */
 
 .c01{
-width:90px;
-animation:move01 45s infinite ease-in-out;
-}
 
-@keyframes move01{
-0%{left:-10%;top:20%;}
-25%{left:25%;top:35%;}
-50%{left:60%;top:15%;}
-75%{left:40%;top:55%;}
-100%{left:110%;top:30%;}
+width:100px;
+
+animation:
+swim01 42s infinite ease-in-out;
+
 }
 
 
-/* 2 */
+@keyframes swim01{
+
+0%{
+left:-10%;
+top:30%;
+}
+
+25%{
+left:25%;
+top:20%;
+}
+
+50%{
+left:55%;
+top:35%;
+}
+
+75%{
+left:80%;
+top:25%;
+}
+
+100%{
+left:110%;
+top:40%;
+}
+
+}
+
+
+
+
+/* 02 */
 
 .c02{
+
 width:140px;
-animation:move02 60s infinite ease-in-out;
-}
 
-@keyframes move02{
-0%{left:110%;top:60%;}
-30%{left:70%;top:30%;}
-60%{left:30%;top:70%;}
-100%{left:-20%;top:40%;}
+animation:
+swim02 55s infinite ease-in-out;
+
 }
 
 
-/* 3 */
+@keyframes swim02{
+
+
+0%{
+left:110%;
+top:60%;
+}
+
+
+30%{
+left:75%;
+top:45%;
+}
+
+
+60%{
+left:35%;
+top:65%;
+}
+
+
+100%{
+left:-20%;
+top:50%;
+}
+
+
+}
+
+
+
+
+/* 03 dubina */
 
 .c03{
-width:250px;
-opacity:.6;
-animation:move03 90s infinite linear;
+
+width:260px;
+
+opacity:.45;
+
+animation:
+swim03 90s infinite linear;
+
 }
 
-@keyframes move03{
-0%{left:-30%;top:75%;}
-50%{left:50%;top:55%;}
-100%{left:120%;top:70%;}
+
+
+@keyframes swim03{
+
+
+0%{
+left:-30%;
+top:70%;
 }
 
 
-/* 4 */
+50%{
+left:45%;
+top:60%;
+}
+
+
+100%{
+left:120%;
+top:75%;
+}
+
+
+}
+
+
+
+
+/* 04 */
 
 .c04{
-width:80px;
-animation:move04 38s infinite ease-in-out;
+
+width:90px;
+
+animation:
+swim04 38s infinite ease-in-out;
+
 }
 
-@keyframes move04{
-0%{left:20%;top:80%;}
-50%{left:70%;top:20%;}
-100%{left:10%;top:40%;}
+
+@keyframes swim04{
+
+
+0%{
+left:10%;
+top:80%;
 }
 
 
-/* 5 */
+50%{
+left:60%;
+top:55%;
+}
+
+
+100%{
+left:100%;
+top:75%;
+}
+
+
+}
+
+
+
+
+
+/* 05 */
 
 .c05{
+
 width:170px;
-animation:move05 70s infinite ease-in-out;
-}
 
-@keyframes move05{
-0%{left:-20%;top:50%;}
-50%{left:80%;top:20%;}
-100%{left:30%;top:80%;}
+animation:
+swim05 70s infinite ease-in-out;
+
 }
 
 
-/* 6 */
+@keyframes swim05{
+
+
+0%{
+left:-20%;
+top:45%;
+}
+
+
+40%{
+left:40%;
+top:30%;
+}
+
+
+80%{
+left:80%;
+top:50%;
+}
+
+
+100%{
+left:120%;
+top:40%;
+}
+
+
+}
+
+
+
+
+
+/* 06 */
 
 .c06{
+
 width:120px;
-animation:move06 55s infinite;
-}
 
-@keyframes move06{
-0%{left:80%;top:80%;}
-50%{left:40%;top:30%;}
-100%{left:-20%;top:60%;}
+animation:
+swim06 60s infinite ease-in-out;
+
 }
 
 
-/* 7 */
+@keyframes swim06{
+
+
+0%{
+left:100%;
+top:20%;
+}
+
+
+50%{
+left:50%;
+top:40%;
+}
+
+
+100%{
+left:-20%;
+top:25%;
+}
+
+
+}
+
+
+
+
+/* 07 */
 
 .c07{
+
 width:220px;
-opacity:.5;
-animation:move07 100s infinite;
+
+opacity:.55;
+
+animation:
+swim07 100s infinite linear;
+
 }
 
-@keyframes move07{
-0%{left:120%;top:30%;}
-50%{left:50%;top:70%;}
-100%{left:-30%;top:20%;}
+
+@keyframes swim07{
+
+
+0%{
+left:-40%;
+top:20%;
 }
 
 
-/* 8 */
+100%{
+left:120%;
+top:35%;
+}
+
+
+}
+
+
+
+
+
+/* 08 */
 
 .c08{
-width:100px;
-animation:move08 45s infinite;
+
+width:110px;
+
+animation:
+swim08 50s infinite ease-in-out;
+
 }
 
-@keyframes move08{
-0%{left:0;top:10%;}
-50%{left:70%;top:50%;}
-100%{left:20%;top:90%;}
+
+@keyframes swim08{
+
+
+0%{
+left:80%;
+top:80%;
 }
 
 
-/* 9 */
+50%{
+left:40%;
+top:55%;
+}
+
+
+100%{
+left:-20%;
+top:70%;
+}
+
+
+}
+
+
+
+
+
+/* 09 */
 
 .c09{
+
 width:130px;
-animation:move09 65s infinite;
+
+animation:
+swim09 65s infinite ease-in-out;
+
 }
 
-@keyframes move09{
-0%{left:90%;top:10%;}
-50%{left:20%;top:60%;}
-100%{left:-20%;top:30%;}
+
+@keyframes swim09{
+
+
+0%{
+left:-20%;
+top:60%;
 }
+
+
+50%{
+left:60%;
+top:75%;
+}
+
+
+100%{
+left:110%;
+top:50%;
+}
+
+
+}
+
+
+
 
 
 /* 10 */
 
 .c10{
+
 width:160px;
-animation:move10 80s infinite;
-}
 
-@keyframes move10{
-0%{left:-20%;top:80%;}
-50%{left:60%;top:40%;}
-100%{left:120%;top:10%;}
-}
-
-
-
-/* DUBINA */
-
-.depth{
-
-position:absolute;
-inset:0;
-
-background:
-radial-gradient(
-ellipse,
-transparent 20%,
-rgba(0,0,0,.55)
-);
+animation:
+swim10 75s infinite ease-in-out;
 
 }
+
+
+@keyframes swim10{
+
+
+0%{
+left:120%;
+top:15%;
+}
+
+
+50%{
+left:50%;
+top:35%;
+}
+
+
+100%{
+left:-20%;
+top:20%;
+}
+
+
+}
+
 
 
 </style>
@@ -331,9 +688,8 @@ rgba(0,0,0,.55)
 <div class="ocean">
 
 
-<div class="light"></div>
+<div class="water-light"></div>
 
-<div class="wave"></div>
 
 
 <div class="bubble b1"></div>
@@ -349,23 +705,28 @@ rgba(0,0,0,.55)
 
 <img class="creature c03" src="https://i.imgur.com/PBlkcyw.gif">
 
-<img class="creature c05" src="https://i.imgur.com/2fCJYbt.gif">
+<img class="creature c04" src="https://i.imgur.com/2fCJYbt.gif">
 
-<img class="creature c06" src="https://i.imgur.com/MOmJ9VR.gif">
+<img class="creature c05" src="https://i.imgur.com/MOmJ9VR.gif">
 
-<img class="creature c07" src="https://i.imgur.com/awkNxXg.gif">
+<img class="creature c06" src="https://i.imgur.com/awkNxXg.gif">
 
-<img class="creature c08" src="https://i.imgur.com/NkT0j9G.gif">
+<img class="creature c07" src="https://i.imgur.com/NkT0j9G.gif">
 
-<img class="creature c09" src="https://i.imgur.com/ljHMWjF.gif">
+<img class="creature c08" src="https://i.imgur.com/ljHMWjF.gif">
 
-<img class="creature c10" src="https://i.imgur.com/QQGiehf.gif">
+<img class="creature c09" src="https://i.imgur.com/QQGiehf.gif">
 
-<img class="creature c01" src="https://i.imgur.com/AqgYZlO.gif">
+<img class="creature c10" src="https://i.imgur.com/AqgYZlO.gif">
 
 <img class="creature c05" src="https://i.imgur.com/YgI0sf7.gif">
 
+<img class="creature c06" src="https://i.imgur.com/9im4MOK.gif">
+
+<img class="creature c08" src="https://i.imgur.com/z494fsE.gif">
+
 <img class="creature c07" src="https://i.imgur.com/VZmMgnR.gif">
+
 
 
 <div class="depth"></div>
