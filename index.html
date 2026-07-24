@@ -16,7 +16,7 @@ html, body {
     height: 100%;
     overflow: hidden;
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background-color: #00101e;
+    background-color: #000c16;
 }
 
 /* =========================
@@ -43,21 +43,14 @@ html, body {
     text-transform: uppercase;
     text-decoration: none;
     letter-spacing: 3px;
-    text-shadow: 
-        0 0 10px #ff6a00,
-        0 0 20px #ff3300,
-        0 0 40px #000,
-        0 0 5px #000;
+    text-shadow: 0 0 10px #ff6a00, 0 0 20px #ff3300, 0 0 40px #000, 0 0 5px #000;
     transition: all 0.3s ease;
     animation: linkPulse 2.5s infinite ease-in-out;
 }
 
 .premium-link:hover {
     color: #fff;
-    text-shadow: 
-        0 0 15px #00e5ff,
-        0 0 30px #0086ff,
-        0 0 50px #000;
+    text-shadow: 0 0 15px #00e5ff, 0 0 30px #0086ff, 0 0 50px #000;
     transform: scale(1.08);
 }
 
@@ -73,19 +66,8 @@ html, body {
     position: fixed;
     inset: 0;
     overflow: hidden;
-    background:
-    radial-gradient(
-        ellipse at 50% 10%,
-        rgba(0,180,240,.35),
-        transparent 45%
-    ),
-    linear-gradient(
-        180deg,
-        #006fa8 0%,
-        #00466f 35%,
-        #002c4a 70%,
-        #00101e 100%
-    );
+    background: radial-gradient(ellipse at 50% 10%, rgba(0,180,240,.35), transparent 45%),
+                linear-gradient(180deg, #006fa8 0%, #00466f 35%, #002c4a 70%, #000c16 100%);
 }
 
 .water-light {
@@ -107,13 +89,13 @@ html, body {
 .depth {
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,.65));
+    background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,.75));
     pointer-events: none;
     z-index: 20;
 }
 
 /* =========================
-   POBOLJŠANI MEHURIĆI
+   POBOLJŠANI MEHURIĆI i ČESTICE VULKANA
 ========================= */
 .bubble {
     position: absolute;
@@ -138,8 +120,178 @@ html, body {
 .b3 { width: 8px; height: 8px; left: 60%; animation-duration: 14s; }
 .b4 { width: 18px; height: 18px; left: 82%; animation-duration: 22s; }
 
+/* PODVODNI VULKAN (Izvor toplote na dnu) */
+.vent-particles {
+    position: absolute;
+    bottom: 0;
+    left: 45%;
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 106, 0, 0.6);
+    box-shadow: 0 0 20px #ff3300;
+    border-radius: 50%;
+    animation: ventUp 8s infinite linear;
+    z-index: 9;
+}
+.vp2 { left: 46%; animation-delay: 2s; animation-duration: 6s; background: rgba(255, 230, 0, 0.5); }
+.vp3 { left: 44%; animation-delay: 4s; animation-duration: 10s; }
+
+@keyframes ventUp {
+    0% { transform: translateY(10px) scale(1); opacity: 1; }
+    50% { background: rgba(0, 229, 255, 0.4); box-shadow: 0 0 15px #00e5ff; }
+    100% { transform: translateY(-110vh) translateX(100px) scale(3); opacity: 0; }
+}
+   /* =========================
+   NOVI CSS ELEMENTI (RUČNO KODIRANI)
+========================= */
+
+/* 1. MAGIČNA SIRENA (Mermaid - Čist CSS i Animacija) */
+.mermaid {
+    position: absolute;
+    width: 60px;
+    height: 35px;
+    background: linear-gradient(90deg, #ff456a, #ff00e5);
+    border-radius: 50% 40% 40% 50%;
+    filter: drop-shadow(0 0 15px rgba(255, 0, 229, 0.8));
+    animation: mermaidSwim 28s infinite ease-in-out;
+    z-index: 14;
+    pointer-events: none;
+}
+/* Rep sirene koji pulsira */
+.mermaid::after {
+    content: '';
+    position: absolute;
+    right: -15px;
+    top: -5px;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-left: 20px solid #ff00e5;
+    animation: tailWag 0.6s infinite alternate ease-in-out;
+    transform-origin: left center;
+}
+/* Magični svetlucavi trag iza sirene */
+.mermaid-sparkle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #ff00e5, 0 0 15px #fff;
+    animation: sparkleTrace 28s infinite ease-in-out;
+    z-index: 13;
+}
+.ms1 { animation-delay: -0.2s; }
+.ms2 { animation-delay: -0.4s; }
+
+/* 2. SVETLEĆI SKAT (Glow Ray - Veliko stvorenje) */
+.glow-ray {
+    position: absolute;
+    width: 180px;
+    height: 60px;
+    background: radial-gradient(ellipse at center, rgba(0, 229, 255, 0.3) 0%, transparent 70%);
+    border-radius: 50% 50% 30% 30%;
+    filter: blur(2px) drop-shadow(0 0 25px rgba(0, 134, 255, 0.6));
+    animation: rayCruising 45s infinite linear;
+    z-index: 7;
+    pointer-events: none;
+}
+/* Dugačak tanak rep skata */
+.glow-ray::after {
+    content: '';
+    position: absolute;
+    left: -80px;
+    top: 50%;
+    width: 90px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.8));
+}
+
+/* 3. CSS MEDUZE (Pulsirajući sjaj i vertikalno kretanje) */
+.jellyfish {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 229, 255, 0.4);
+    border-radius: 50% 50% 40% 40%;
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.8), inset 0 5px 10px #fff;
+    animation: jellySwim 25s infinite linear, jellyPulse 2s infinite ease-in-out;
+    z-index: 8;
+    pointer-events: none;
+}
+.jellyfish::before, .jellyfish::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    width: 2px;
+    height: 25px;
+    background: linear-gradient(180deg, rgba(0,229,255,0.7), transparent);
+    border-radius: 2px;
+}
+.jellyfish::before { left: 12px; animation: tentacle 1s infinite alternate; }
+.jellyfish::after { right: 12px; animation: tentacle 1.2s infinite alternate-reverse; }
+
+.j1 { left: 20%; bottom: -80px; transform: scale(0.8); }
+.j2 { left: 75%; bottom: -80px; animation-duration: 35s, 2.5s; animation-delay: 4s, 0.5s; transform: scale(1.3); filter: hue-rotate(50deg); }
+.j3 { left: 50%; bottom: -80px; animation-duration: 29s, 1.8s; animation-delay: 8s, 0.2s; transform: scale(0.9); filter: hue-rotate(-30deg); }
+
+/* 4. JATO MALIH NEON RIBICA */
+.fish-school {
+    position: absolute;
+    width: 14px;
+    height: 7px;
+    background: #00e5ff;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #00e5ff;
+    animation: schoolMoving 22s infinite linear;
+    z-index: 12;
+}
+.fish-school::after {
+    content: '';
+    position: absolute;
+    right: -4px;
+    top: 1px;
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    border-left: 4px solid #00e5ff;
+}
+.fs1 { top: 25%; left: -50px; animation-delay: 0s; }
+.fs2 { top: 28%; left: -80px; animation-delay: 0.4s; transform: scale(0.8); }
+.fs3 { top: 23%; left: -70px; animation-delay: 0.8s; transform: scale(0.9); }
+
+/* 5. MORSKA ZVEZDA NA DNU */
+.starfish {
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+    width: 35px;
+    height: 35px;
+    background: #ff456a;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    filter: drop-shadow(0 0 10px rgba(255, 69, 106, 0.6));
+    animation: starfishGlow 4s infinite alternate ease-in-out;
+    z-index: 21;
+}
+
+/* 6. MORSKA TRAVA KOJA SE NJIŠE (Seaweed) */
+.seaweed {
+    position: absolute;
+    bottom: -10px;
+    width: 8px;
+    height: 120px;
+    background: linear-gradient(0deg, #002c4a, #00e5ff);
+    border-radius: 8px 8px 0 0;
+    opacity: 0.4;
+    transform-origin: bottom center;
+    animation: weedSway 4s infinite alternate ease-in-out;
+    z-index: 6;
+}
+.sw1 { left: 5%; height: 140px; animation-duration: 3.5s; }
+.sw2 { left: 7%; height: 90px; animation-duration: 4.5s; animation-delay: -1s; }
+.sw3 { left: 91%; height: 160px; animation-duration: 5s; }
+.sw4 { left: 93%; height: 110px; animation-duration: 3.8s; animation-delay: -0.5s; }
+
 /* =========================
-   MORSKE ŽIVOTINJE
+   MORSKE ŽIVOTINJE (VAŠI ORIGINALNI GIF-ovi)
 ========================= */
 .creature {
     position: absolute;
@@ -149,27 +301,77 @@ html, body {
     will-change: transform, left, top;
 }
 
-/* Desno orijentisana stvorenja (plivaju s leva na desno) */
+/* Plivaju s leva na desno */
 .c01 { width: 100px; animation: swim01 42s infinite ease-in-out; }
 .c03 { width: 260px; opacity: .45; animation: swim03 90s infinite linear; }
 .c04 { width: 90px; animation: swim04 38s infinite ease-in-out; }
 .c05 { width: 170px; animation: swim05 70s infinite ease-in-out; }
 .c07 { width: 220px; opacity: .55; animation: swim07 100s infinite linear; }
 .c09 { width: 130px; animation: swim09 65s infinite ease-in-out; }
+.c13 { width: 110px; animation: swim13 52s infinite ease-in-out; }
 
-/* Levo orijentisana stvorenja (s desna na levo) */
+/* Plivaju s desna na levo (Okrenuti preko scaleX) */
 .c02 { width: 140px; animation: swim02 55s infinite ease-in-out; transform: scaleX(-1); }
 .c06 { width: 120px; animation: swim06 60s infinite ease-in-out; transform: scaleX(-1); }
 .c08 { width: 110px; animation: swim08 50s infinite ease-in-out; transform: scaleX(-1); }
 .c10 { width: 160px; animation: swim10 75s infinite ease-in-out; transform: scaleX(-1); }
-
-/* Nove klase za preostala stvorenja sa korigovanim kretanjem */
 .c11 { width: 140px; animation: swim11 58s infinite ease-in-out; transform: scaleX(-1); }
 .c12 { width: 150px; animation: swim12 64s infinite ease-in-out; transform: scaleX(-1); }
-.c13 { width: 110px; animation: swim13 52s infinite ease-in-out; }
 .c14 { width: 130px; animation: swim14 48s infinite ease-in-out; transform: scaleX(-1); }
 
-/* ANIMACIJE KRETANJA */
+</style>
+</head>
+<body>
+
+   /* =========================
+   ANIMACIJE KRETANJA (SVI ELEMENTI)
+========================= */
+@keyframes mermaidSwim {
+    0% { left: -10%; top: 50%; transform: scale(1) translateY(0); }
+    30% { top: 35%; transform: scale(1) translateY(-20px); }
+    50% { left: 45%; top: 55%; transform: scale(1.1) translateY(20px); }
+    75% { top: 40%; transform: scale(1) translateY(-15px); }
+    100% { left: 110%; top: 50%; transform: scale(1) translateY(0); }
+}
+@keyframes sparkleTrace {
+    0% { left: -10%; top: 53%; opacity: 0; }
+    50% { opacity: 1; }
+    100% { left: 110%; top: 53%; opacity: 0; }
+}
+@keyframes tailWag {
+    0% { transform: rotate(-10deg); }
+    100% { transform: rotate(10deg); }
+}
+@keyframes rayCruising {
+    0% { left: -200px; top: 20%; transform: rotate(5deg); }
+    50% { top: 40%; transform: rotate(-5deg); }
+    100% { left: 110%; top: 15%; transform: rotate(5deg); }
+}
+@keyframes jellySwim {
+    0% { bottom: -100px; transform: translateX(0); }
+    50% { transform: translateX(50px); }
+    100% { bottom: 110%; transform: translateX(-30px); }
+}
+@keyframes jellyPulse {
+    0%, 100% { height: 40px; border-radius: 50% 50% 40% 40%; }
+    50% { height: 32px; border-radius: 50% 50% 25% 25%; }
+}
+@keyframes tentacle {
+    0% { height: 20px; transform: skewX(-5deg); }
+    100% { height: 30px; transform: skewX(5deg); }
+}
+@keyframes schoolMoving {
+    0% { left: -50px; }
+    100% { left: 110%; }
+}
+@keyframes weedSway {
+    0% { transform: rotate(-4deg); }
+    100% { transform: rotate(4deg); }
+}
+@keyframes starfishGlow {
+    0% { filter: drop-shadow(0 0 5px rgba(255, 69, 106, 0.4)) rotate(0deg); }
+    100% { filter: drop-shadow(0 0 15px rgba(255, 69, 106, 0.9)) rotate(5deg); }
+}
 @keyframes swim01 {
     0% { left: -10%; top: 30%; }
     25% { left: 25%; top: 20%; }
@@ -177,83 +379,70 @@ html, body {
     75% { left: 80%; top: 25%; }
     100% { left: 110%; top: 40%; }
 }
-
 @keyframes swim02 {
     0% { left: 110%; top: 60%; }
     30% { left: 75%; top: 45%; }
     60% { left: 35%; top: 65%; }
     100% { left: -20%; top: 50%; }
 }
-
 @keyframes swim03 {
     0% { left: -30%; top: 70%; }
     50% { left: 45%; top: 60%; }
     100% { left: 120%; top: 75%; }
 }
-
 @keyframes swim04 {
     0% { left: -10%; top: 80%; }
     50% { left: 60%; top: 55%; }
     100% { left: 110%; top: 75%; }
 }
-
 @keyframes swim05 {
     0% { left: -20%; top: 45%; }
     40% { left: 40%; top: 30%; }
     80% { left: 80%; top: 50%; }
     100% { left: 120%; top: 40%; }
 }
-
 @keyframes swim06 {
     0% { left: 110%; top: 20%; }
     50% { left: 50%; top: 40%; }
     100% { left: -20%; top: 25%; }
 }
-
 @keyframes swim07 {
     0% { left: -40%; top: 20%; }
     100% { left: 120%; top: 35%; }
 }
-
 @keyframes swim08 {
     0% { left: 110%; top: 80%; }
     50% { left: 40%; top: 55%; }
     100% { left: -20%; top: 70%; }
 }
-
 @keyframes swim09 {
     0% { left: -20%; top: 60%; }
     50% { left: 60%; top: 75%; }
     100% { left: 110%; top: 50%; }
 }
-
 @keyframes swim10 {
     0% { left: 110%; top: 15%; }
     50% { left: 50%; top: 35%; }
     100% { left: -20%; top: 20%; }
 }
-
 @keyframes swim11 {
     0% { left: 110%; top: 85%; }
     30% { left: 75%; top: 65%; }
     60% { left: 35%; top: 75%; }
     100% { left: -20%; top: 55%; }
 }
-
 @keyframes swim12 {
     0% { left: 110%; top: 10%; }
     30% { left: 75%; top: 35%; }
     60% { left: 45%; top: 25%; }
     100% { left: -20%; top: 40%; }
 }
-
 @keyframes swim13 {
     0% { left: -20%; top: 75%; }
     40% { left: 35%; top: 60%; }
     75% { left: 75%; top: 80%; }
     100% { left: 110%; top: 65%; }
 }
-
 @keyframes swim14 {
     0% { left: 110%; top: 45%; }
     50% { left: 50%; top: 55%; }
@@ -278,24 +467,53 @@ html, body {
     <div class="bubble b3"></div>
     <div class="bubble b4"></div>
 
-    <!-- Morski Svet -->
-    <img class="creature c01" src="https://i.imgur.com/AaEWDOs.gif" alt="Creature">
-    <img class="creature c02" src="https://i.imgur.com/3fe3rwn.gif" alt="Creature">
-    <img class="creature c03" src="https://i.imgur.com/PBlkcyw.gif" alt="Creature">
-    <img class="creature c04" src="https://i.imgur.com/2fCJYbt.gif" alt="Creature">
-    <img class="creature c05" src="https://i.imgur.com/MOmJ9VR.gif" alt="Creature">
-    <img class="creature c06" src="https://i.imgur.com/awkNxXg.gif" alt="Creature">
-    <img class="creature c07" src="https://i.imgur.com/NkT0j9G.gif" alt="Creature">
-    <img class="creature c08" src="https://i.imgur.com/ljHMWjF.gif" alt="Creature">
-    <img class="creature c09" src="https://i.imgur.com/QQGiehf.gif" alt="Creature">
-    <img class="creature c10" src="https://i.imgur.com/AqgYZlO.gif" alt="Creature">
-    <img class="creature c11" src="https://i.imgur.com/YgI0sf7.gif" alt="Creature">
-    <img class="creature c12" src="https://i.imgur.com/9im4MOK.gif" alt="Creature">
-    <img class="creature c13" src="https://i.imgur.com/z494fsE.gif" alt="Creature">
-    <img class="creature c14" src="https://i.imgur.com/VZmMgnR.gif" alt="Creature">
+    <!-- Čestice podvodnog vulkana -->
+    <div class="vent-particles vp1"></div>
+    <div class="vent-particles vp2"></div>
+    <div class="vent-particles vp3"></div>
 
+    <!-- Morske trave na dnu -->
+    <div class="seaweed sw1"></div>
+    <div class="seaweed sw2"></div>
+    <div class="seaweed sw3"></div>
+    <div class="seaweed sw4"></div>
+
+    <!-- Ručno kodirane CSS životinje -->
+    <div class="jellyfish j1"></div>
+    <div class="jellyfish j2"></div>
+    <div class="jellyfish j3"></div>
+
+    <div class="fish-school fs1"></div>
+    <div class="fish-school fs2"></div>
+    <div class="fish-school fs3"></div>
+
+    <div class="glow-ray"></div>
+
+    <div class="mermaid"></div>
+    <div class="mermaid-sparkle ms1"></div>
+    <div class="mermaid-sparkle ms2"></div>
+
+    <!-- Originalni GIF-ovi -->
+    <img class="creature c01" src="https://imgur.com" alt="Creature">
+    <img class="creature c02" src="https://imgur.com" alt="Creature">
+    <img class="creature c03" src="https://imgur.com" alt="Creature">
+    <img class="creature c04" src="https://imgur.com" alt="Creature">
+    <img class="creature c05" src="https://imgur.com" alt="Creature">
+    <img class="creature c06" src="https://imgur.com" alt="Creature">
+    <img class="creature c07" src="https://imgur.com" alt="Creature">
+    <img class="creature c08" src="https://imgur.com" alt="Creature">
+    <img class="creature c09" src="https://imgur.com" alt="Creature">
+    <img class="creature c10" src="https://imgur.com" alt="Creature">
+    <img class="creature c11" src="https://imgur.com" alt="Creature">
+    <img class="creature c12" src="https://imgur.com" alt="Creature">
+    <img class="creature c13" src="https://imgur.com" alt="Creature">
+    <img class="creature c14" src="https://imgur.com" alt="Creature">
+
+    <!-- Detalji na samom dnu -->
+    <div class="starfish"></div>
     <div class="depth"></div>
 </div>
 
 </body>
 </html>
+
