@@ -16,6 +16,7 @@ html, body {
     height: 100%;
     overflow: hidden;
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #00101e;
 }
 
 /* =========================
@@ -26,7 +27,7 @@ html, body {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 9999; /* Najviši indeks - uvek iznad svega i klikabilan */
+    z-index: 9999;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,13 +37,12 @@ html, body {
 }
 
 .premium-link {
-    color: #ff6a00; /* Moćna neonska narandžasta za maksimalan kontrast */
+    color: #ff6a00;
     font-size: 22px;
     font-weight: 900;
     text-transform: uppercase;
     text-decoration: none;
     letter-spacing: 3px;
-    /* Brutalan višeslojni sjaj za čitljivost na svakoj podlozi */
     text-shadow: 
         0 0 10px #ff6a00,
         0 0 20px #ff3300,
@@ -88,7 +88,6 @@ html, body {
     );
 }
 
-/* BLAGA SVETLOST KROZ VODU */
 .water-light {
     position: absolute;
     top: -40%;
@@ -140,7 +139,7 @@ html, body {
 .b4 { width: 18px; height: 18px; left: 82%; animation-duration: 22s; }
 
 /* =========================
-   MORSKE ŽIVOTINJE (SA PREKRETANJEM)
+   MORSKE ŽIVOTINJE
 ========================= */
 .creature {
     position: absolute;
@@ -158,11 +157,17 @@ html, body {
 .c07 { width: 220px; opacity: .55; animation: swim07 100s infinite linear; }
 .c09 { width: 130px; animation: swim09 65s infinite ease-in-out; }
 
-/* Levo orijentisana stvorenja (plivaju s desna na levo - transformisana da gledaju levo) */
+/* Levo orijentisana stvorenja (s desna na levo) */
 .c02 { width: 140px; animation: swim02 55s infinite ease-in-out; transform: scaleX(-1); }
 .c06 { width: 120px; animation: swim06 60s infinite ease-in-out; transform: scaleX(-1); }
 .c08 { width: 110px; animation: swim08 50s infinite ease-in-out; transform: scaleX(-1); }
 .c10 { width: 160px; animation: swim10 75s infinite ease-in-out; transform: scaleX(-1); }
+
+/* Nove klase za preostala stvorenja sa korigovanim kretanjem */
+.c11 { width: 140px; animation: swim11 58s infinite ease-in-out; transform: scaleX(-1); }
+.c12 { width: 150px; animation: swim12 64s infinite ease-in-out; transform: scaleX(-1); }
+.c13 { width: 110px; animation: swim13 52s infinite ease-in-out; }
+.c14 { width: 130px; animation: swim14 48s infinite ease-in-out; transform: scaleX(-1); }
 
 /* ANIMACIJE KRETANJA */
 @keyframes swim01 {
@@ -227,34 +232,42 @@ html, body {
     50% { left: 50%; top: 35%; }
     100% { left: -20%; top: 20%; }
 }
-    @keyframes swim11 {
-    0% { left: 3600%; top: 90%; }
-    30% { left: 75%; top: 25%; }
-    60% { left: 35%; top: 155%; }
-    100% { left: -20%; top: -50%; }
+
+@keyframes swim11 {
+    0% { left: 110%; top: 85%; }
+    30% { left: 75%; top: 65%; }
+    60% { left: 35%; top: 75%; }
+    100% { left: -20%; top: 55%; }
 }
-    @keyframes swim12 {
-    0% { left: 180%; top: 10%; }
-    30% { left: 340%; top: 65%; }
-    60% { left: 95%; top: 45%; }
-    100% { left: -90%; top: 100%; }
+
+@keyframes swim12 {
+    0% { left: 110%; top: 10%; }
+    30% { left: 75%; top: 35%; }
+    60% { left: 45%; top: 25%; }
+    100% { left: -20%; top: 40%; }
 }
-    @keyframes swim13 {
-    0% { left: 10%; top: 240%; }
-    30% { left: 175%; top: 145%; }
-    60% { left: -35%; top: 165%; }
-    100% { left: -220%; top: 350%; }
+
+@keyframes swim13 {
+    0% { left: -20%; top: 75%; }
+    40% { left: 35%; top: 60%; }
+    75% { left: 75%; top: 80%; }
+    100% { left: 110%; top: 65%; }
 }
-    @keyframes swim14 {
-    0% { left: 310%; top: 5%; }
-    30% { left: -75%; top: -45%; }
-    60% { left: -135%; top: -165%; }
-    100% { left: -20%; top: 360%; }
+
+@keyframes swim14 {
+    0% { left: 110%; top: 45%; }
+    50% { left: 50%; top: 55%; }
+    100% { left: -20%; top: 35%; }
 }
 </style>
 </head>
 
 <body>
+
+<!-- Visokokontrastni link na vrhu -->
+<div class="top-link-container">
+    <a href="#" class="premium-link">Radio Galaksija Premium</a>
+</div>
 
 <div class="ocean">
     <div class="water-light"></div>
