@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Deep Ocean XAT - Radio Galaksija</title>
+<title>Deep Ocean XAT - Čist CSS Ekosistem</title>
 
 <style>
 /* =========================
@@ -18,42 +18,6 @@ html, body {
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     background-color: #000c16;
 }
-
-/* =========================
-   VISOKOKONTRASTNI LINK NA VRHU
-========================= */
-.top-link-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 70%, transparent 100%);
-    padding: 15px 0 25px 0;
-    pointer-events: auto;
-}
-
-.premium-link {
-    color: #ff6a00;
-    font-size: 22px;
-    font-weight: 900;
-    text-transform: uppercase;
-    text-decoration: none;
-    letter-spacing: 3px;
-    text-shadow: 0 0 10px #ff6a00, 0 0 20px #ff3300, 0 0 40px #000, 0 0 5px #000;
-    transition: all 0.3s ease;
-    animation: linkPulse 2.5s infinite ease-in-out;
-}
-
-.premium-link:hover {
-    color: #fff;
-    text-shadow: 0 0 15px #00e5ff, 0 0 30px #0086ff, 0 0 50px #000;
-    transform: scale(1.08);
-}
-
 @keyframes linkPulse {
     0%, 100% { transform: scale(1); opacity: 0.95; }
     50% { transform: scale(1.03); opacity: 1; filter: drop-shadow(0 0 15px rgba(255,106,0,0.6)); }
@@ -141,64 +105,43 @@ html, body {
     100% { transform: translateY(-110vh) translateX(100px) scale(3); opacity: 0; }
 }
 /* =========================
-   NOVI CSS ELEMENTI (RUČNO KODIRANI)
+   ČIST CSS EKOSISTEM (STRUKTURA I ANATOMIJA)
 ========================= */
-.mermaid {
+/* 4. UNAPREĐENO JATO RIBA */
+.school-container {
     position: absolute;
-    width: 60px;
-    height: 35px;
-    background: linear-gradient(90deg, #ff456a, #ff00e5);
-    border-radius: 50% 40% 40% 50%;
-    filter: drop-shadow(0 0 15px rgba(255, 0, 229, 0.8));
-    animation: mermaidSwim 28s infinite ease-in-out;
-    z-index: 14;
+    width: 250px;
+    height: 180px;
+    animation: schoolOceanSwim 28s infinite ease-in-out;
+    z-index: 15;
     pointer-events: none;
 }
-.mermaid::after {
-    content: '';
+.school-fish {
     position: absolute;
-    right: -15px;
-    top: -5px;
-    border-top: 12px solid transparent;
-    border-bottom: 12px solid transparent;
-    border-left: 20px solid #ff00e5;
-    animation: tailWag 0.6s infinite alternate ease-in-out;
-    transform-origin: left center;
-}
-.mermaid-sparkle {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: #fff;
+    width: 16px;
+    height: 9px;
+    background: linear-gradient(90deg, #00f0ff, #0072ff);
     border-radius: 50%;
-    box-shadow: 0 0 8px #ff00e5, 0 0 15px #fff;
-    animation: sparkleTrace 28s infinite ease-in-out;
-    z-index: 13;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.8);
+    animation: fishMicroWiggle 2s infinite ease-in-out alternate;
 }
-.ms1 { animation-delay: -0.2s; }
-.ms2 { animation-delay: -0.4s; }
-
-.glow-ray {
-    position: absolute;
-    width: 180px;
-    height: 60px;
-    background: radial-gradient(ellipse at center, rgba(0, 229, 255, 0.3) 0%, transparent 70%);
-    border-radius: 50% 50% 30% 30%;
-    filter: blur(2px) drop-shadow(0 0 25px rgba(0, 134, 255, 0.6));
-    animation: rayCruising 45s infinite linear;
-    z-index: 7;
-    pointer-events: none;
-}
-.glow-ray::after {
+.school-fish::after {
     content: '';
     position: absolute;
-    left: -80px;
-    top: 50%;
-    width: 90px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.8));
+    right: -4px;
+    top: 2px;
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    border-left: 5px solid #00f0ff;
 }
+.sf1 { top: 20px; left: 30px; animation-delay: -0.2s; transform: scale(1.1); }
+.sf2 { top: 40px; left: 10px; animation-delay: -0.5s; transform: scale(0.9); }
+.sf3 { top: 15px; left: 70px; animation-delay: -0.1s; transform: scale(1); }
+.sf4 { top: 60px; left: 50px; animation-delay: -0.7s; transform: scale(0.85); }
+.sf5 { top: 80px; left: 20px; animation-delay: -0.4s; transform: scale(1.05); }
+.sf6 { top: 50px; left: 90px; animation-delay: -0.3s; transform: scale(0.95); }
 
+/* 5. MEDUZE, ZVEZDA I TRAVA */
 .jellyfish {
     position: absolute;
     width: 40px;
@@ -217,37 +160,11 @@ html, body {
     width: 2px;
     height: 25px;
     background: linear-gradient(180deg, rgba(0,229,255,0.7), transparent);
-    border-radius: 2px;
 }
 .jellyfish::before { left: 12px; animation: tentacle 1s infinite alternate; }
 .jellyfish::after { right: 12px; animation: tentacle 1.2s infinite alternate-reverse; }
-
 .j1 { left: 20%; bottom: -80px; transform: scale(0.8); }
 .j2 { left: 75%; bottom: -80px; animation-duration: 35s, 2.5s; animation-delay: 4s, 0.5s; transform: scale(1.3); filter: hue-rotate(50deg); }
-.j3 { left: 50%; bottom: -80px; animation-duration: 29s, 1.8s; animation-delay: 8s, 0.2s; transform: scale(0.9); filter: hue-rotate(-30deg); }
-
-.fish-school {
-    position: absolute;
-    width: 14px;
-    height: 7px;
-    background: #00e5ff;
-    border-radius: 50%;
-    box-shadow: 0 0 8px #00e5ff;
-    animation: schoolMoving 22s infinite linear;
-    z-index: 12;
-}
-.fish-school::after {
-    content: '';
-    position: absolute;
-    right: -4px;
-    top: 1px;
-    border-top: 2px solid transparent;
-    border-bottom: 2px solid transparent;
-    border-left: 4px solid #00e5ff;
-}
-.fs1 { top: 25%; left: -50px; animation-delay: 0s; }
-.fs2 { top: 28%; left: -80px; animation-delay: 0.4s; transform: scale(0.8); }
-.fs3 { top: 23%; left: -70px; animation-delay: 0.8s; transform: scale(0.9); }
 
 .starfish {
     position: absolute;
@@ -261,7 +178,6 @@ html, body {
     animation: starfishGlow 4s infinite alternate ease-in-out;
     z-index: 21;
 }
-
 .seaweed {
     position: absolute;
     bottom: -10px;
@@ -275,12 +191,10 @@ html, body {
     z-index: 6;
 }
 .sw1 { left: 5%; height: 140px; animation-duration: 3.5s; }
-.sw2 { left: 7%; height: 90px; animation-duration: 4.5s; animation-delay: -1s; }
-.sw3 { left: 91%; height: 160px; animation-duration: 5s; }
-.sw4 { left: 93%; height: 110px; animation-duration: 3.8s; animation-delay: -0.5s; }
+.sw2 { left: 91%; height: 160px; animation-duration: 5s; }
 
 /* =========================
-   KLASE ZA TVOJE ORIGINALNE GIF-ove
+   MORSKE ŽIVOTINJE (KLASE ZA ORIGINALNE GIF-ove)
 ========================= */
 .creature {
     position: absolute;
@@ -289,51 +203,72 @@ html, body {
     filter: drop-shadow(0 0 8px rgba(0,180,255,.45));
     will-change: transform, left, top;
 }
-
 .c01 { width: 100px; animation: swim01 42s infinite ease-in-out; }
+.c02 { width: 140px; animation: swim02 55s infinite ease-in-out; transform: scaleX(-1); }
 .c03 { width: 260px; opacity: .45; animation: swim03 90s infinite linear; }
 .c04 { width: 90px; animation: swim04 38s infinite ease-in-out; }
 .c05 { width: 170px; animation: swim05 70s infinite ease-in-out; }
-.c07 { width: 220px; opacity: .55; animation: swim07 100s infinite linear; }
-.c09 { width: 130px; animation: swim09 65s infinite ease-in-out; }
-.c13 { width: 110px; animation: swim13 52s infinite ease-in-out; }
-
-.c02 { width: 140px; animation: swim02 55s infinite ease-in-out; transform: scaleX(-1); }
 .c06 { width: 120px; animation: swim06 60s infinite ease-in-out; transform: scaleX(-1); }
+.c07 { width: 220px; opacity: .55; animation: swim07 100s infinite linear; }
 .c08 { width: 110px; animation: swim08 50s infinite ease-in-out; transform: scaleX(-1); }
+.c09 { width: 130px; animation: swim09 65s infinite ease-in-out; }
 .c10 { width: 160px; animation: swim10 75s infinite ease-in-out; transform: scaleX(-1); }
 .c11 { width: 140px; animation: swim11 58s infinite ease-in-out; transform: scaleX(-1); }
 .c12 { width: 150px; animation: swim12 64s infinite ease-in-out; transform: scaleX(-1); }
+.c13 { width: 110px; animation: swim13 52s infinite ease-in-out; }
 .c14 { width: 130px; animation: swim14 48s infinite ease-in-out; transform: scaleX(-1); }
 
-   /* =========================
+/* =========================
    ANIMACIJE KRETANJA (SVI ELEMENTI)
 ========================= */
-@keyframes mermaidSwim {
-    0% { left: -10%; top: 50%; transform: scale(1) translateY(0); }
-    30% { top: 35%; transform: scale(1) translateY(-20px); }
-    50% { left: 45%; top: 55%; transform: scale(1.1) translateY(20px); }
-    75% { top: 40%; transform: scale(1) translateY(-15px); }
-    100% { left: 110%; top: 50%; transform: scale(1) translateY(0); }
+
+/* Kretanje celog jata riba po ekranu */
+@keyframes schoolOceanSwim {
+    0% { left: -300px; top: 25%; }
+    25% { top: 45%; }
+    50% { left: 45%; top: 15%; }
+    75% { top: 35%; }
+    100% { left: 110%; top: 30%; }
 }
-@keyframes sparkleTrace {
-    0% { left: -10%; top: 53%; opacity: 0; }
-    50% { opacity: 1; }
-    100% { left: 110%; top: 53%; opacity: 0; }
+/* Mikro-mrdanje ribica u jatu */
+@keyframes fishMicroWiggle {
+    0% { transform: translateY(0) rotate(-4deg); }
+    100% { transform: translateY(6px) rotate(4deg); }
+}
+
+/* Talasasta prirodna putanja za CSS Sirenu */
+@keyframes mermaidNaturalSwim {
+    0% { left: -150px; top: 45%; transform: scaleX(1); }
+    49% { transform: scaleX(1); }
+    50% { left: 110%; top: 25%; transform: scaleX(-1); }
+    99% { transform: scaleX(-1); }
+    100% { left: -150px; top: 45%; transform: scaleX(1); }
 }
 @keyframes tailWag {
+    0% { transform: rotate(-8deg); }
+    100% { transform: rotate(8deg); }
+}
+@keyframes sparkleTrace {
+    0% { left: -150px; top: 47%; opacity: 0; }
+    50% { opacity: 1; }
+    100% { left: 110%; top: 27%; opacity: 0; }
+}
+
+@keyframes finFlap {
+    0% { transform: rotate(15deg); }
+    100% { transform: rotate(50deg); }
+}
+
+@keyframes clawsSnip {
     0% { transform: rotate(-10deg); }
-    100% { transform: rotate(10deg); }
+    100% { transform: rotate(15deg); }
 }
-@keyframes rayCruising {
-    0% { left: -200px; top: 20%; transform: rotate(5deg); }
-    50% { top: 40%; transform: rotate(-5deg); }
-    100% { left: 110%; top: 15%; transform: rotate(5deg); }
-}
+
+/* Animacije meduza, trava i zvezde */
 @keyframes jellySwim {
     0% { bottom: -100px; transform: translateX(0); }
-    50% { transform: translateX(50px); }
-    100% { bottom: 110%; transform: translateX(-30px); }
+    50% { transform: translateX(40px); }
+    100% { bottom: 115%; transform: translateX(-40px); }
 }
 @keyframes jellyPulse {
     0%, 100% { height: 40px; border-radius: 50% 50% 40% 40%; }
@@ -343,102 +278,87 @@ html, body {
     0% { height: 20px; transform: skewX(-5deg); }
     100% { height: 30px; transform: skewX(5deg); }
 }
-@keyframes schoolMoving {
-    0% { left: -50px; }
-    100% { left: 110%; }
-}
 @keyframes weedSway {
-    0% { transform: rotate(-4deg); }
-    100% { transform: rotate(4deg); }
+    0% { transform: rotate(-5deg); }
+    100% { transform: rotate(5deg); }
 }
 @keyframes starfishGlow {
-    0% { filter: drop-shadow(0 0 5px rgba(255, 69, 106, 0.4)) rotate(0deg); }
-    100% { filter: drop-shadow(0 0 15px rgba(255, 69, 106, 0.9)) rotate(5deg); }
+    0% { filter: drop-shadow(0 0 5px rgba(255, 69, 106, 0.4)); }
+    100% { filter: drop-shadow(0 0 15px rgba(255, 69, 106, 0.9)); }
 }
+
+/* Prirodne talasaste putanje za tvoje originalne GIF slike */
 @keyframes swim01 {
     0% { left: -10%; top: 30%; }
-    25% { left: 25%; top: 20%; }
-    50% { left: 55%; top: 35%; }
-    75% { left: 80%; top: 25%; }
-    100% { left: 110%; top: 40%; }
+    50% { left: 50%; top: 40%; }
+    100% { left: 110%; top: 35%; }
 }
 @keyframes swim02 {
-    0% { left: 110%; top: 60%; }
-    30% { left: 75%; top: 45%; }
-    60% { left: 35%; top: 65%; }
+    0% { left: 110%; top: 55%; }
+    50% { left: 45%; top: 65%; }
     100% { left: -20%; top: 50%; }
 }
 @keyframes swim03 {
-    0% { left: -30%; top: 70%; }
-    50% { left: 45%; top: 60%; }
-    100% { left: 120%; top: 75%; }
+    0% { left: -30%; top: 68%; }
+    100% { left: 120%; top: 72%; }
 }
 @keyframes swim04 {
-    0% { left: -10%; top: 80%; }
-    50% { left: 60%; top: 55%; }
-    100% { left: 110%; top: 75%; }
+    0% { left: -10%; top: 78%; }
+    50% { left: 55%; top: 60%; }
+    100% { left: 110%; top: 72%; }
 }
 @keyframes swim05 {
-    0% { left: -20%; top: 45%; }
-    40% { left: 40%; top: 30%; }
-    80% { left: 80%; top: 50%; }
-    100% { left: 120%; top: 40%; }
+    0% { left: -20%; top: 42%; }
+    50% { left: 60%; top: 32%; }
+    100% { left: 120%; top: 38%; }
 }
 @keyframes swim06 {
-    0% { left: 110%; top: 20%; }
-    50% { left: 50%; top: 40%; }
-    100% { left: -20%; top: 25%; }
+    0% { left: 110%; top: 22%; }
+    50% { left: 50%; top: 38%; }
+    100% { left: -20%; top: 27%; }
 }
 @keyframes swim07 {
-    0% { left: -40%; top: 20%; }
-    100% { left: 120%; top: 35%; }
+    0% { left: -40%; top: 22%; }
+    100% { left: 120%; top: 33%; }
 }
 @keyframes swim08 {
-    0% { left: 110%; top: 80%; }
-    50% { left: 40%; top: 55%; }
-    100% { left: -20%; top: 70%; }
+    0% { left: 110%; top: 78%; }
+    50% { left: 50%; top: 60%; }
+    100% { left: -20%; top: 72%; }
 }
 @keyframes swim09 {
-    0% { left: -20%; top: 60%; }
-    50% { left: 60%; top: 75%; }
-    100% { left: 110%; top: 50%; }
+    0% { left: -20%; top: 58%; }
+    50% { left: 55%; top: 72%; }
+    100% { left: 110%; top: 52%; }
 }
 @keyframes swim10 {
-    0% { left: 110%; top: 15%; }
-    50% { left: 50%; top: 35%; }
-    100% { left: -20%; top: 20%; }
+    0% { left: 110%; top: 18%; }
+    50% { left: 55%; top: 32%; }
+    100% { left: -20%; top: 22%; }
 }
 @keyframes swim11 {
-    0% { left: 110%; top: 85%; }
-    30% { left: 75%; top: 65%; }
-    60% { left: 35%; top: 75%; }
-    100% { left: -20%; top: 55%; }
+    0% { left: 110%; top: 82%; }
+    50% { left: 45%; top: 72%; }
+    100% { left: -20%; top: 62%; }
 }
 @keyframes swim12 {
-    0% { left: 110%; top: 10%; }
-    30% { left: 75%; top: 35%; }
-    60% { left: 45%; top: 25%; }
-    100% { left: -20%; top: 40%; }
+    0% { left: 110%; top: 12%; }
+    50% { left: 50%; top: 32%; }
+    100% { left: -20%; top: 38%; }
 }
 @keyframes swim13 {
-    0% { left: -20%; top: 75%; }
-    40% { left: 35%; top: 60%; }
-    75% { left: 75%; top: 80%; }
-    100% { left: 110%; top: 65%; }
+    0% { left: -20%; top: 72%; }
+    50% { left: 45%; top: 62%; }
+    100% { left: 110%; top: 67%; }
 }
 @keyframes swim14 {
-    0% { left: 110%; top: 45%; }
-    50% { left: 50%; top: 55%; }
-    100% { left: -20%; top: 35%; }
+    0% { left: 110%; top: 42%; }
+    50% { left: 50%; top: 52%; }
+    100% { left: -20%; top: 38%; }
 }
 </style>
 </head>
 <body>
-
-<!-- Visokokontrastni link na vrhu -->
-<div class="top-link-container">
-    <a href="#" class="premium-link">Radio Galaksija Premium</a>
-</div>
 
 <div class="ocean">
     <div class="water-light"></div>
@@ -457,26 +377,23 @@ html, body {
     <!-- Morske trave na dnu -->
     <div class="seaweed sw1"></div>
     <div class="seaweed sw2"></div>
-    <div class="seaweed sw3"></div>
-    <div class="seaweed sw4"></div>
 
-    <!-- Ručno kodirane CSS životinje -->
+    <!-- Pulsirajuće Meduze -->
     <div class="jellyfish j1"></div>
     <div class="jellyfish j2"></div>
-    <div class="jellyfish j3"></div>
 
-    <div class="fish-school fs1"></div>
-    <div class="fish-school fs2"></div>
-    <div class="fish-school fs3"></div>
+    <!-- UNAPREĐENO JATO RIBA (Čist CSS oblik) -->
+    <div class="school-container">
+        <div class="school-fish sf1"></div>
+        <div class="school-fish sf2"></div>
+        <div class="school-fish sf3"></div>
+        <div class="school-fish sf4"></div>
+        <div class="school-fish sf5"></div>
+        <div class="school-fish sf6"></div>
+    </div>
 
-    <div class="glow-ray"></div>
-
-    <div class="mermaid"></div>
-    <div class="mermaid-sparkle ms1"></div>
-    <div class="mermaid-sparkle ms2"></div>
-
-    <!-- TVOJE ORIGINALNE GIF SLIKE (CREATURES) -->
- <img class="creature c01" src="https://i.imgur.com/AaEWDOs.gif" alt="Creature">
+      <!-- TVOJE ORIGINALNE GIF SLIKE (CREATURES) -->
+   <img class="creature c01" src="https://i.imgur.com/AaEWDOs.gif" alt="Creature">
     <img class="creature c02" src="https://i.imgur.com/3fe3rwn.gif" alt="Creature">
     <img class="creature c03" src="https://i.imgur.com/PBlkcyw.gif" alt="Creature">
     <img class="creature c04" src="https://i.imgur.com/2fCJYbt.gif" alt="Creature">
